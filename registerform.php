@@ -39,7 +39,7 @@ foreach ($tzlist as $zone){
   </div>
   <div class="form-group">
     <label for="dateformat">Date Format</label>
-    <input type="text" class="form-control" name="dateformat" id="dateformat" value="'d/M/Y h:i:s'">
+    <input type="text" class="form-control" name="dateformat" id="dateformat" value="d/m/Y h:i:s">
     <span class="help-block">This will be used to display datetimes in the way you want to see them. <a href="http://php.net/manual/en/function.date.php">PHP date rules</a>, slightly mad, sorry.</span>
   </div>
 

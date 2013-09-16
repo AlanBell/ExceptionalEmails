@@ -19,6 +19,7 @@ $users=$mdb->selectCollection("users");
         'email' => $_POST['email'],
         'username'=> $_POST['username'],
         'hash' => $hash,
+        'dateformat' => $_POST['dateformat'],
         'maxalerts'=>3,
         'confirm'=>substr(md5(uniqid()), 0, 8)
     );

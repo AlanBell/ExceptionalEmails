@@ -1,6 +1,7 @@
 <?php
 function render($fieldname,$datatype,$object){
         global $mdb;
+	global $userRef;
         //this allows rendering datatypes in different ways
         //should start with some guesswork
         //we can go off-record using dbref dereferencing, but that can be slow
@@ -61,7 +62,8 @@ function render($fieldname,$datatype,$object){
         case "datetime":
                 //this should go look up the datetime format for the current user
                 $date=date($value->sec);
-                return date("d/m/Y H:i:s",$date);
+		$user=MongoDBRef::get ( $mdb , $userRef );
+                return date($user['dateformat'],$date);
         case "docref":
 	        $reldoc=MongoDBRef::get ( $mdb , $value );
 		if ($types[1]){
