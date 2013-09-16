@@ -40,14 +40,14 @@ foreach ($tzlist as $zone){
   <div class="form-group">
     <label for="dateformat">Date Format</label>
     <input type="text" class="form-control" name="dateformat" id="dateformat" value="d/m/Y h:i:s">
-    <span class="help-block">This will be used to display datetimes in the way you want to see them. <a href="http://php.net/manual/en/function.date.php">PHP date rules</a>, slightly mad, sorry.</span>
+    <span class="help-block">This will be used to display datetimes in the way you want to see them. <a href="http://php.net/manual/en/function.date.php" target="_new">PHP date rules</a>, slightly mad, sorry.</span>
   </div>
 
   <div class="checkbox">
     <label>
       <input type="checkbox" name="tanc" required="required"> Terms and Conditions
     </label>
-    <span class="help-block">We have some <a href="?action=tandc">Terms and Conditions</a>. They are acceptable, promise!</span>
+    <span class="help-block">We have some <a href="?action=tandc" target="_new">Terms and Conditions</a>. They are acceptable, promise!</span>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
