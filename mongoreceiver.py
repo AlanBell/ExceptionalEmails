@@ -125,6 +125,13 @@ class CustomSMTPServer(smtpd.SMTPServer):
             exceptionalemails.events.save(eventobj)
             if (eventobj['badregex'] or not eventobj['goodregex']):
                 sendfail(eventobj,"Bad email")
+                if ("deleteonfail" in alertobj['Options']):
+                    post['data']=None
+                    post['payload']=None
+            else:
+                if ("deleteonsuccess" in alertobj['Options']):
+                    post['data']=None
+                    post['payload']=None
         else:
             #we don't have an expectation created for today, but the email did arrive and we know what alert it belongs to.
             #it is possible that today isn't a day we were expecting this event to fire - or something is wrong with the cronjob that creates expectations

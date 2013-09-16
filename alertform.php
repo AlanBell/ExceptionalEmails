@@ -39,7 +39,8 @@ echo $user['username'];
     You can use full regular expression syntax if you want to.</span>
     <label for="worrytime">Worry Time</label>
     <input type="time" class="form-control" name="worrytime"  placeholder="09:00" value="09:00">
-    <span class="help-block">Give it some leeway, sometimes things take a bit longer than normal. Time is in your timezone (<?php echo $user['timezone'] ?>).</span>
+    <span class="help-block">This isn't the time the email normally arrives, it is the time when you would start to be concerned if it hasn't turned up.
+Give it some leeway, sometimes things take a bit longer than normal. Time is in your timezone (<?php echo $user['timezone'] ?>).</span>
     <label>Days expected</label><br/>
 
 <label class="checkbox-inline">
@@ -75,10 +76,10 @@ assume that it should happen every day. (This feature might not be working yet -
 
   <div class="form-group">
 <label class="checkbox">
-    <input type="checkbox" id="option1" value="deleteonsuccess"  name="Options[]"> Delete email body if is a successful email
+    <input type="checkbox" id="option1" value="deleteonsuccess"  name="Options[]"> Delete email body if is a successful email (by goodwords/badwords)
 </label>
 <label class="checkbox">
-    <input type="checkbox" id="option1" value="deleteonsuccess"  name="Options[]"> Delete body if alert is triggered (late or wrong content)
+    <input type="checkbox" id="option1" value="deleteonfail"  name="Options[]"> Delete body if alert is triggered (by goodwords/badwords)
 </label>
     <span class="help-block">You might want us to discard the body content of the email on arrival after checking it for the good words/bad words. If you do choose this then we will do the tests in memory on arrival of the email and never write the body to disk. It can be handy to keep the body for failed mails as there might be some diagnostic information in there. (This feature might not be working yet)</span>
 

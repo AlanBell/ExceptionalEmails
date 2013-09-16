@@ -24,14 +24,16 @@ defined('_EXCEPTIONAL') or die("Go through the front door please.");
 global $userRef;
 if($userRef){
 //              echo '<li><a href="?action=dashboard">Dashboard</a></li>';
-              echo '<li><a href="?action=expected">Expected</a></li>';
-              echo '<li><a href="?action=received">Received</a></li>';
+              echo '<li><a href="?action=expected">Alerts</a></li>';
               echo '<li><a href="?action=events">Events</a></li>';
+              echo '<li><a href="?action=received">All Mails</a></li>';
+              echo '<li><a href="?action=faq">FAQ</a></li>';
+              echo '<li><a href="https://github.com/AlanBell/ExceptionalEmails/issues" target="_new">Issues</a></li>';
               echo '<li><a href="?action=logout">Logout</a></li>';
 }else{
               echo '<li><a href="?action=about">Welcome</a></li>';
-}
               echo '<li><a href="?action=faq">FAQ</a></li>';
+}
 
 ?>
             </ul>
