@@ -125,11 +125,11 @@ class CustomSMTPServer(smtpd.SMTPServer):
             exceptionalemails.events.save(eventobj)
             if (eventobj['badregex'] or not eventobj['goodregex']):
                 sendfail(eventobj,"Bad email")
-                if ("deleteonfail" in alertobj['Options']):
+                if (alertobj['Options'] and "deleteonfail" in alertobj['Options']):
                     post['data']=None
                     post['payload']=None
             else:
-                if ("deleteonsuccess" in alertobj['Options']):
+                if (alertobj['Options'] and "deleteonsuccess" in alertobj['Options']):
                     post['data']=None
                     post['payload']=None
         else:

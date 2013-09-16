@@ -29,7 +29,8 @@ and we notify you of the problem by emailing you then you won't get the notifica
 problem fairly quickly)
 <h3>Can I have a notification as soon as a successfull email arrives?</h3>
 No. That would be missing the point, If you want to know about the email when it happens then simply send it to yourself. We aim
-to only email you when you need to care which means there must be stuff that you don't care about.
+to only email you when you need to care which means there must be stuff that you don't care about. What you could do is set up a
+mail rule to forward stuff to exceptionalemails.com, so you get it first then bounce it out to us.
 <h3>What happens if I get spam to my alert address?</h3>
 Hopefully this won't be much of an issue as you won't use the "username+alertname@exceptionalemails.com" address for anything else,
 we recommend you use the good words field to check the incoming emails for something that is pretty much always there
