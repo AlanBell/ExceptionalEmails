@@ -4,9 +4,14 @@ defined('_EXCEPTIONAL') or die("Go through the front door please.");
 <?php
 require_once("renderfield.php");
 function SlickGrid($cursor,$columns){
+	$maxrows=50;//number of rows to autohight, before growing scrollbars and dynamically rendering rows
 	$htmlout = '';
 //	$htmlout = 'grid size is ' . $cursor->count();
-	$htmlout .= '<div id="myGrid" style="height:600px;" class="panel panel-default"></div>';
+	if ($cursor->count()<$maxrows){
+		$htmlout .='<div id="myGrid" class="panel panel-default"></div>';
+	}else{
+		$htmlout .= '<div id="myGrid" style="height:500px;" class="panel panel-default"></div>';
+	}
         $htmlout .= '<link rel="stylesheet" href="SlickGrid/slick.grid.css" type="text/css"/>';
         $htmlout .= '<link rel="stylesheet" href="slickbootstrap.css" type="text/css"/>';
         $htmlout .= '<link rel="stylesheet" href="SlickGrid/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>';
@@ -21,10 +26,6 @@ $collection=explode(".",$collectioninfo["ns"]);
        $htmlout .= '<script>
   var grid;
   var columns = '.json_encode($columns).'
-  var options = {
-    enableCellNavigation: true,
-    enableColumnReorder: false
-  };
 
   $(function () {
     var data = [];
@@ -53,8 +54,9 @@ foreach($cursor as $row){
   var options = {
     enableCellNavigation: true,
     enableColumnReorder: false,
-    forceFitColumns:true,
-  };
+    forceFitColumns:true,';
+if ($cursor->count()<$maxrows){$htmlout .="autoHeight: true";}
+  $htmlout .='};
 //automatically expand it relative to something? or to a parameter passed in?
 //  $("#myGrid").css({"height":(($(document).height())-180)+"px"});
   grid = new Slick.Grid("#myGrid", data, columns,options);

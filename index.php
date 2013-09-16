@@ -8,18 +8,25 @@ define("_EXCEPTIONAL",1);
 <head>
 <title>Exceptional Emails</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="Socialite/socialite.min.js"></script>
+	<link rel="stylesheet" href="Socialite/demo/demo.css">
+
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="jquery.sparkline.min.js"></script>
+<!-- Update your html tag to include the itemscope and itemtype attributes. -->
+<html itemscope itemtype="http://schema.org/Article">
+
+<!-- Add the following three tags inside head. -->
+<meta itemprop="name" content="Exceptional Emails">
+<meta itemprop="description" content="Alerts you about the emails you didn't get">
+<meta itemprop="image" content="http://libertus.co.uk/images/medium-logo.png">
 </head>
 <body>
     <div class="container">
-
-
-
 <?php
 //the exceptional emails UI attempt without a framework or CMS to get in the way
 include "utils.php";

@@ -6,6 +6,9 @@ Do you get regular automated emails? "Backup Completed" "Cronjob ran" "Temperatu
 Exceptional Emails will give you an email address to send all your regular boring repetitive emails. You define what emails you are expecting to get, what words to look for, how often they should arrive - then forget about it. If one day an email fails to arrive, or doesn't contain the words you are looking for, or contains words you don't want to see e.g. "Backup failed" then, and only then, it will send you an email.
 Replace lots of regular success messages in your inbox with a single email that only happens when you need to care about it.
 </div>
+<?php
+include "social.php";
+?>
 <div class="row">
   <div class="col-md-8">
     <div class="panel panel-primary">
