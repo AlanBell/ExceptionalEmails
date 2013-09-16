@@ -4,7 +4,7 @@ defined('_EXCEPTIONAL') or die("Go through the front door please.");
 <div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
 This page will give you an overview of your email alerts and the status they were in
 last time they were expected. We will probably add pretty graphs of past performance here.
-Maybe some sparklines.
+Maybe some sparklines. Sparklines are cool. Yeah, sparklines, lets totally do that.
 </div>
 <table class="table">
 <?php

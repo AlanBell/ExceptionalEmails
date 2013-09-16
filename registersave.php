@@ -2,7 +2,6 @@
 defined('_EXCEPTIONAL') or die("Go through the front door please.");
 ?>
 <?php
-echo "thanks for registering . . . ";
 //
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //we will use password_hash, but not yet on 5.5 server
@@ -19,8 +18,39 @@ $users=$mdb->selectCollection("users");
     $user=array(
         'email' => $_POST['email'],
         'username'=> $_POST['username'],
-        'hash' => $hash
+        'hash' => $hash,
+        'maxalerts'=>3,
+        'confirm'=>substr(md5(uniqid()), 0, 8)
     );
-$users->insert($user);
+try{
+	$users->insert($user);
+$to=$_POST['email'];
+$subject="Confirm your registration at Exceptionalemails.com";
+$message="Thanks for registering, please ";
+$message .= 'click here http://exceptionalemails.com/?action=confirm&key=' . $user['confirm'] . ' to activate your acccount.';
+$headers = 'From: exceptional@exceptionalemails.com' . "\r\n" .
+    'Reply-To: nobody' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+mail ( $to , $subject , $message,$headers );
+
+echo '<div class="alert alert-success">';
+
+echo "Thanks for registering, we just sent an email to ";
+echo $_POST['email'];
+echo ", there is a link in the mail that you need to click to activate your account.";
+echo "You know the drill.";
+echo "</div>";
+
+}catch(MongoCursorException $e){
+?>
+<div class="alert alert-danger">
+Registration failed, maybe that email address or username has already been used, do try again.
+</div>
+<?php
+include "registerform.php";
+}
+//now send them a magic link to click to activate their account
+
+
 }
 ?>

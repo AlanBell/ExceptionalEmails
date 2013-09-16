@@ -13,7 +13,7 @@ defined('_EXCEPTIONAL') or die("Go through the front door please.");
 <div class="panel-body">
 <form role="form" action="?action=alertsave" method="post" >
   <div class="form-group">
-    <label for="AlertName">Alert Subject</label>
+    <label for="AlertName">Alert subject</label>
     <input type="text" class="form-control" name="AlertName" id="AlertName" placeholder="Enter something to remind you what this alert is for">
   </div>
   <div class="form-group">
@@ -26,50 +26,63 @@ echo $user['username'];
 ?>+</span>
         <input type="text" class="form-control" name="emailslug" id="emailslug" placeholder="alertname">
       <span class="input-group-addon">@exceptionalemails.com</span>
+
     </div>
+    <span class="help-block">This is your unique email address for this alert - so make it unique and with no spaces so it forms a valid email address.</span>
+
     <label for="goodregex">Good words</label>
-    <input type="text" class="form-control" name="goodregex" placeholder="Success">
+    <input type="text" class="form-control" name="goodregex">
     <label for="badregex">Bad words</label>
-    <input type="text" class="form-control" name="badregex"  placeholder="Fail">
+    <input type="text" class="form-control" name="badregex">
     <span class="help-block">You might want to search for words like "Success" or "Done" and you might not want to see "Fail" or "Error".
     If you want to search for any of several words you can use | as a separator, e.g. bad words "fail|error" it isn't case sensitive.
     You can use full regular expression syntax if you want to.</span>
     <label for="worrytime">Worry Time</label>
     <input type="time" class="form-control" name="worrytime"  placeholder="09:00" value="09:00">
-    <span class="help-block">Give it some leeway, sometimes things take a bit longer than normal. Time is in UTC at the moment.</span>
+    <span class="help-block">Give it some leeway, sometimes things take a bit longer than normal. Time is in your timezone (<?php echo $user['timezone'] ?>).</span>
     <label>Days expected</label><br/>
 
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox1" value="Every Day" name="days[]"> Every Day
-</label><br/>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox1" value="Monday" name="days[]"> Monday
+  <input type="checkbox" id="frequency2" value="Monday" name="days[]"> Monday
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox2" value="Tuesday"  name="days[]"> Tuesday
+  <input type="checkbox" id="frequency3" value="Tuesday"  name="days[]"> Tuesday
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox3" value="Wednesday"  name="days[]"> Wednesday
+  <input type="checkbox" id="frequency4" value="Wednesday"  name="days[]"> Wednesday
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox4" value="Thursday"  name="days[]"> Thursday
+  <input type="checkbox" id="frequency5" value="Thursday"  name="days[]"> Thursday
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox5" value="Friday"  name="days[]"> Friday
+  <input type="checkbox" id="frequency6" value="Friday"  name="days[]"> Friday
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox6" value="Saturday"  name="days[]"> Saturday
+  <input type="checkbox" id="frequency7" value="Saturday"  name="days[]"> Saturday
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox7" value="Sunday"  name="days[]"> Sunday
+  <input type="checkbox" id="frequency8" value="Sunday"  name="days[]"> Sunday
 </label>
 <br>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox9" value="First day of the month"  name="days[]"> First day of the month
+  <input type="checkbox" id="frequenc9" value="First day of the month"  name="days[]"> First day of the month
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox10" value="Last day of the month"  name="days[]"> Last day of the month
+  <input type="checkbox" id="frequency10" value="Last day of the month"  name="days[]"> Last day of the month
 </label>
+    <span class="help-block">You might want to specify that this happens just on specific days of the week or around a month end. Leave all the checkboxes blank and we will
+assume that it should happen every day. (This feature might not be working yet - everything is assumed to be every day)</span>
+
+  <div class="form-group">
+<label class="checkbox">
+    <input type="checkbox" id="option1" value="deleteonsuccess"  name="Options[]"> Delete email body if is a successful email
+</label>
+<label class="checkbox">
+    <input type="checkbox" id="option1" value="deleteonsuccess"  name="Options[]"> Delete body if alert is triggered (late or wrong content)
+</label>
+    <span class="help-block">You might want us to discard the body content of the email on arrival after checking it for the good words/bad words. If you do choose this then we will do the tests in memory on arrival of the email and never write the body to disk. It can be handy to keep the body for failed mails as there might be some diagnostic information in there. (This feature might not be working yet)</span>
+
+  </div>
 
   </div>
   <button type="submit" class="btn btn-default">Submit</button>

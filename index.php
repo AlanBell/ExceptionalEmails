@@ -71,10 +71,25 @@ switch($action){
 	case "alertsave":
 		include "alertsave.php";
 		break;
+	case "confirm":
+		include "registerconfirm.php";
+		break;
+	case "events":
+		include "events.php";
+		break;
+	case "object":
+		include "renderobjectread.php";
+		break;
+	case "tandc":
+		include "tandc.php";
+		break;
 	case "login":
 		break;
 	case "logout":
 		include "logout.php";
+		break;
+	case "faq":
+		include "faq.php";
 		break;
 	default:
 		include "welcome.php";

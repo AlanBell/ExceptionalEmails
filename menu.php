@@ -23,14 +23,16 @@ defined('_EXCEPTIONAL') or die("Go through the front door please.");
 <?php
 global $userRef;
 if($userRef){
-              echo '<li><a href="?action=dashboard">Dashboard</a></li>';
+//              echo '<li><a href="?action=dashboard">Dashboard</a></li>';
               echo '<li><a href="?action=expected">Expected</a></li>';
               echo '<li><a href="?action=received">Received</a></li>';
+              echo '<li><a href="?action=events">Events</a></li>';
               echo '<li><a href="?action=logout">Logout</a></li>';
 }else{
-              echo '<li><a href="?action=about">Login</a></li>';
-              echo '<li><a href="?action=register">Register</a></li>';
+              echo '<li><a href="?action=about">Welcome</a></li>';
 }
+              echo '<li><a href="?action=faq">FAQ</a></li>';
+
 ?>
             </ul>
   </div><!-- /.navbar-collapse -->

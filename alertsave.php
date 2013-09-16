@@ -21,12 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }elseif($_GET['pause']){
 //    echo "pausing " . $_GET['pause'];
     $alerts->update(array("user"=>$userRef,"_id"=>new MongoId($_GET['pause'])),array('$set'=>array("pause"=>"1")));
-    echo exceptionalalert("Paused");
   }elseif($_GET['play']){
     $alerts->update(array("user"=>$userRef,"_id"=>new MongoId($_GET['play'])),array('$set'=>array("pause"=>"")));
-    echo exceptionalalert("Restarted");
   }else{
-    echo exceptionalalert("Error","danger");
   }
 
 }

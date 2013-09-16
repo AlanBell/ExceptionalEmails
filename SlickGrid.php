@@ -2,20 +2,7 @@
 defined('_EXCEPTIONAL') or die("Go through the front door please.");
 ?>
 <?php
-function render($datatype,$value){
-	//this allows rendering datatypes in different ways
-	//should start with some guesswork
-	switch($datatype){
-	case "datetime":
-		//this should go look up the datetime format for the current user
-		$date=date($value->sec);
-		return date("d/m/Y H:i:s",$date);
-	default:
-		//we have not been told what the datatype is, and we couldn't guess
-		//if it is an array lets return it with commas, otherwise just return it
-		return $value;
-	}
-}
+require_once("renderfield.php");
 function SlickGrid($cursor,$columns){
 	$htmlout = '';
 //	$htmlout = 'grid size is ' . $cursor->count();
@@ -29,7 +16,8 @@ function SlickGrid($cursor,$columns){
 //now we put in the HTML for populating the grid from the cursor
 //this isn't ajaxy at the moment, we fling *all* the data in the cursor to the browser
 //but use slickgrid to render it without exploding
-
+$collectioninfo=$cursor->info();
+$collection=explode(".",$collectioninfo["ns"]);
        $htmlout .= '<script>
   var grid;
   var columns = '.json_encode($columns).'
@@ -46,10 +34,13 @@ $i=0;
 foreach($cursor as $row){
 	//iterate through the columns of this row
 	$htmlout.="data[$i]={";
+	$htmlout.="\"_id\" : \"" . $row['_id'] . "\",";
+
 	foreach($columns as $col){
 		$field=$col['field'];
-		$value=render($col['datatype'],$row[$field]);
-		$htmlout.="$field : \"".$value . "\",";
+		$datatype=$col['datatype'];
+		$value=render($field,$datatype,$row);
+		$htmlout.="\"$field\" : \"".$value . "\",";
 	}
 	$htmlout.="}\n";
 	$i++;
@@ -62,10 +53,18 @@ foreach($cursor as $row){
   var options = {
     enableCellNavigation: true,
     enableColumnReorder: false,
+    forceFitColumns:true,
   };
 //automatically expand it relative to something? or to a parameter passed in?
 //  $("#myGrid").css({"height":(($(document).height())-180)+"px"});
   grid = new Slick.Grid("#myGrid", data, columns,options);
+  grid.onDblClick.subscribe(function (e) {
+      var cell = grid.getCellFromEvent(e);
+      //window.alert(data[cell.row]["_id"]);
+      var objid=data[cell.row]["_id"];
+      window.location="?action=object&collection=' . $collection[1] . '&objectid=" + objid;
+      e.stopPropagation();
+    });
 
   })
 </script>';
