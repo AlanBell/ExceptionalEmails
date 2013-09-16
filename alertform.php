@@ -76,12 +76,12 @@ assume that it should happen every day. (This feature might not be working yet -
 
   <div class="form-group">
 <label class="checkbox">
-    <input type="checkbox" id="option1" value="deleteonsuccess"  name="Options[]"> Delete email body if is a successful email (by goodwords/badwords)
+    <input type="checkbox" id="option1" value="deleteonsuccess"  name="Options[]"> Delete email body if is a successful email (has good words and doesn't have bad words)
 </label>
 <label class="checkbox">
-    <input type="checkbox" id="option1" value="deleteonfail"  name="Options[]"> Delete body if alert is triggered (by goodwords/badwords)
+    <input type="checkbox" id="option1" value="deleteonfail"  name="Options[]"> Delete body if alert is triggered (lacks good words or has bad words)
 </label>
-    <span class="help-block">You might want us to discard the body content of the email on arrival after checking it for the good words/bad words. If you do choose this then we will do the tests in memory on arrival of the email and never write the body to disk. It can be handy to keep the body for failed mails as there might be some diagnostic information in there. (This feature might not be working yet)</span>
+    <span class="help-block">You might want us to discard the body content of the email on arrival after checking it for the good words/bad words. If you do choose this then we will do the tests in memory on arrival of the email and never write the body to disk. It can be handy to keep the body for failed mails as there might be some diagnostic information in there.</span>
 
   </div>
 

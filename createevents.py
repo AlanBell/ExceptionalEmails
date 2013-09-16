@@ -14,6 +14,7 @@ from bson.dbref import DBRef
 from datetime import datetime
 from pytz import timezone
 import pytz
+import calendar
 
 client = MongoClient()
 exceptionalemails = client.exceptionalemails
@@ -43,7 +44,20 @@ for alert in alerts.find({"pause":{'$ne':"1"}}):
             #print "Creating:", event
             #is this a date for which we are expecting this alert to fire?
             weekday=now.weekday()
-            events.update({'user':event['user'],'alert':event['alert'],'date':event['date']},{'$set':event},True)
+            dom=now.day
+            lastday=calendar.monthrange(now.year, now.month)[1]
+            if (( not 'days' in alert ) 
+            or  (weekday==0 and 'Monday' in alert['days'])
+            or  (weekday==1 and 'Tuesday' in alert['days'])
+            or  (weekday==2 and 'Wednesday' in alert['days'])
+            or  (weekday==3 and 'Thursday' in alert['days'])
+            or  (weekday==4 and 'Friday' in alert['days'])
+            or  (weekday==5 and 'Saturday' in alert['days'])
+            or  (weekday==6 and 'Sunday' in alert['days'])
+            or  (dom==1 and 'First day of the month' in alert['days'])
+            or  (dom==lastday and 'Last day of the month' in alert['days'])):
+                events.update({'user':event['user'],'alert':event['alert'],'date':event['date']},{'$set':event},True)
+
         else:
             print "ERROR Alert %s has no user" % alert['_id']
    except Exception as e:
