@@ -1,3 +1,4 @@
+<a href="https://github.com/AlanBell/ExceptionalEmails"><img style="position: absolute; top: 51px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <h3>How reliable is this service?</h3>
 Pretty good, it is running on reliable infrastructure in the Hetzner datacentre in Germany. The important thing is not that our
 systems are 100% reliable, but that they are 100% <b>independent</b> of your systems. If we are down for a few minutes we will pick

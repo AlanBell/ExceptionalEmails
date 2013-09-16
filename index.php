@@ -16,9 +16,6 @@ define("_EXCEPTIONAL",1);
 <script src="jquery.sparkline.min.js"></script>
 </head>
 <body>
-<div style="position:absolute;right:20px;z-index:1;pointer-events: none;">
-<img src="beta.png" width="200px"/>
-</div>
     <div class="container">
 
 
