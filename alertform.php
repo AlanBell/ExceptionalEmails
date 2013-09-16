@@ -72,7 +72,7 @@ Give it some leeway, sometimes things take a bit longer than normal. Time is in 
   <input type="checkbox" id="frequency10" value="Last day of the month"  name="days[]"> Last day of the month
 </label>
     <span class="help-block">You might want to specify that this happens just on specific days of the week or around a month end. Leave all the checkboxes blank and we will
-assume that it should happen every day. (This feature might not be working yet - everything is assumed to be every day)</span>
+assume that it should happen every day.</span>
 
   <div class="form-group">
 <label class="checkbox">
