@@ -47,7 +47,7 @@ foreach ($tzlist as $zone){
     <label>
       <input type="checkbox" name="tanc" required="required"> Terms and Conditions
     </label>
-    <span class="help-block">We totally should have some Terms and Conditions. They will be acceptable, promise!</span>
+    <span class="help-block">We have some <a href="?action=tandc">Terms and Conditions</a>. They are acceptable, promise!</span>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
