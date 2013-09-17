@@ -21,28 +21,30 @@ fmt = '%Y-%m-%d %H:%M:%S'
 
 for event in events.find({"complete":{'$ne':True}}):
     #we don't care if they are past or future yet, 
-#   try:
+   try:
     if event['user']:
         user=exceptionalemails.dereference(event['user'])
         if user:
             alert=exceptionalemails.dereference(event['alert'])
-            print 'Processing event "%s" for user "%s"' % (alert['AlertName'],user['username'])
+            #print 'Processing event "%s" for user "%s"' % (alert['AlertName'],user['username'])
             eventzone=timezone(event['timezone'])#fairly unlikely that the user timezone and event timezone are different, but the user could change their zone at some point and historical events should keep their zone
             now=datetime.now(eventzone)
             userdate=now.strftime(fmt)
             worrydt=datetime.strptime(event['date'] +' '+ event['worrytime'] ,'%Y-%m-%d %H:%M' )
-            print "worrytime is %s" % (eventzone.localize(worrydt) )
-            print 'datetime now in their zone is %s' % userdate
+            #print "worrytime is %s" % (eventzone.localize(worrydt) )
+            #print 'datetime now in their zone is %s' % userdate
             timetoworry=eventzone.localize(worrydt)-now
-            print "timedelta is %s" % (timetoworry.total_seconds())
+            #print "timedelta is %s" % (timetoworry.total_seconds())
             #there probably won't be any emails referencing this event (there could be later, if one arrives late - but it is still a fail)
             #the only important thing is whether now is after the worrytime
             if timetoworry.total_seconds()<0:
                #we should now be worried, lets complete this event as a fail, and notify the user
+               print "Sending a fail, event %s is late" % event['_id']
                events.update({'_id':event['_id']},{'$set':{'late':True,'complete':True}})
                sendfail(event,"Late")
+               print
         else:
             print "ERROR Event %s has no user" % event['_id']
-    print
-#   except Exception as e:
-#      print "ERROR  %s processing alert %s " % (e, alert['_id'])
+            print
+   except Exception as e:
+      print "ERROR  %s processing alert %s " % (e, alert['_id'])

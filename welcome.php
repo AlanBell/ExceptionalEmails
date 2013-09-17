@@ -15,9 +15,11 @@ include "social.php";
       <div class="panel-heading">
         <h3 class="panel-title">Register now</h3>
       </div>
+<div class="panel-body">
 <?php
 include "registerform.php"
 ?>
+</div>
     </div>
   </div>
   <div class="col-md-4">
@@ -25,9 +27,11 @@ include "registerform.php"
       <div class="panel-heading">
         <h3 class="panel-title">Login if you are already registered</h3>
       </div>
+<div class="panel-body">
 <?php
 include "loginform.php"
 ?>
+</div>
     </div>
   </div>
 </div>

@@ -15,26 +15,23 @@ define("_EXCEPTIONAL",1);
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="jquery.sparkline.min.js"></script>
-<!-- Update your html tag to include the itemscope and itemtype attributes. -->
-<html itemscope itemtype="http://schema.org/Article">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="jquery.sparkline.min.js"></script>
+	<html itemscope itemtype="http://schema.org/Article">
 
-<!-- Add the following three tags inside head. -->
-<meta itemprop="name" content="Exceptional Emails">
-<meta itemprop="description" content="Alerts you about the emails you didn't get">
-<meta itemprop="image" content="http://libertus.co.uk/images/medium-logo.png">
+	<meta itemprop="name" content="Exceptional Emails">
+	<meta itemprop="description" content="Alerts you about the emails you didn't get">
+	<meta itemprop="image" content="http://libertus.co.uk/images/medium-logo.png">
 </head>
 <body>
     <div class="container">
 <?php
-//the exceptional emails UI attempt without a framework or CMS to get in the way
 include "utils.php";
 include "header.php";
 global $mdb;
 $m = new MongoClient(); // connect to the back end database
 $mdb = $m->selectDB("exceptionalemails");
-//bit of error handling if the database is MIA
+//TODO add a bit of error handling if the database is MIA
 
 //is there a session open?
 //if there isn't we display welcome and registration page
@@ -48,7 +45,6 @@ include "logout.php";
 include "menu.php";//the menu is different for logged in users
 
 //what command has been passed on the query string?
-//
 
 $action = '';
 if(isset($_REQUEST['action']))
@@ -88,6 +84,10 @@ switch($action){
 		include "tandc.php";
 		break;
 	case "login":
+		if($userRef){
+		}else{
+			include "welcome.php";
+		}
 		break;
 	case "logout":
 		include "logout.php";

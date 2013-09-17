@@ -27,12 +27,10 @@ for alert in alerts.find({"pause":{'$ne':"1"}}):
     if alert['user']:
         user=exceptionalemails.dereference(alert['user'])
         if user:
-            #print 'Processing alert "%s" for user "%s"' % (alert['AlertName'],user['username'])
             #print 'user is in timezone %s' %  user['timezone']
             userzone=timezone(user['timezone'])
             now=datetime.now(userzone)#arguably this should use now + 1 hour, or we should do two loops, now and now plus a bit
             userdate=now.strftime(fmt)
-            #print 'Date now in their zone is %s' % userdate
             #now create the event for this user, for this alert
             #for today
             event={}
@@ -56,6 +54,7 @@ for alert in alerts.find({"pause":{'$ne':"1"}}):
             or  (weekday==6 and 'Sunday' in alert['days'])
             or  (dom==1 and 'First day of the month' in alert['days'])
             or  (dom==lastday and 'Last day of the month' in alert['days'])):
+                print 'Ensuring alert "%s" for user "%s"' % (alert['AlertName'],user['username'])
                 events.update({'user':event['user'],'alert':event['alert'],'date':event['date']},{'$set':event},True)
 
         else:

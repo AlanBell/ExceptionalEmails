@@ -5,6 +5,8 @@ to be mildly irritated or in fact somewhat peeved, we have no intention of turni
 
 <h2>Privacy</h2>
 We won't sell your data, we won't spam you.
-
+<h2>Who is behind this?</h2>
+ExceptionalEmails.com is owned and operated by <a href="http://libertus.co.uk">Libertus Solutions</a>, a UK based software consultancy focussing
+on implementing free and open source software for businesses of all sizes.
 <h2>Thats it!</h2>
 There isn't much more to say really.

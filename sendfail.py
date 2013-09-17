@@ -16,7 +16,7 @@ def sendfail(event,reason):
     alert=exceptionalemails.dereference(event['alert'])
 
     #prepare the email
-    if (reason=="late"):
+    if (reason=="Late"):
         msg=MIMEText("We were expecting a valid email to be sent to %s+%s@exceptionalemails.com by %s but we don't have one." % ( user['username'] , alert['emailslug'], event['worrytime']),'plain')
     elif (reason=="Bad email"):
         msg=MIMEText("We received an invalid email to %s+%s@exceptionalemails.com.\n Click here to view details http://exceptionalemails.com/?action=object&collection=events&objectid=%s" % ( user['username'] , alert['emailslug'],event['_id']),'plain')

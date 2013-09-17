@@ -44,7 +44,7 @@ complexity of constant monitoring of events on their infrastructure.
 <h3>What about privacy?</h3>
 We have no intention whatsoever of selling your data to anyone, or putting adverts on the site (It isn't a good site
 for adverts, the idea is you set up your alerts and never need to visit again). We don't store your password, just a hash of it.
-We are not going to email you junk or let anyone else email you stuff, you will only get alerts you have asket for. (We are not
+We are not going to email you junk or let anyone else email you stuff, you will only get alerts you have asked for. (We are not
 totally ruling out the possibility that one day we might need to send all users an email if there is something suitably important
 to announce, but emailing you isn't part of our plan). When setting up your emails do have a think about whether they contain
 sensitive information, don't send us a backup script log that includes passwords for example. Hostnames and filenames could also
@@ -52,7 +52,7 @@ be considered a minor risk, but it is your call. Remember we have the option to 
 before we write it to disk.
 <h3>Is it open source, can I run it myself?</h3>
 This site is based on open source software specifically jQuery and Bootstrap with Python, PHP, MongoDB and Ubuntu Linux on the server.
-The code for the site is available on GitHub under the AGPL3 licence, so yes you can to see and audit the source,
+The code for the site is <a href="https://github.com/AlanBell/ExceptionalEmails">available on GitHub</a> under the AGPL3 licence, so yes you can to see and audit the source,
 contribute fixes and run it yourself - however see the first point about reliability and independence. Running it on your own
 infrastructure means it could be affected by the same problem that you want it to tell you about.
 

@@ -20,6 +20,7 @@ $users=$mdb->selectCollection("users");
         'username'=> $_POST['username'],
         'hash' => $hash,
         'dateformat' => $_POST['dateformat'],
+        'timezone' => $_POST['timezone'],
         'maxalerts'=>3,
         'confirm'=>substr(md5(uniqid()), 0, 8)
     );
