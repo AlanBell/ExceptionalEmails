@@ -89,6 +89,7 @@ function render($fieldname,$datatype,$object){
 	case "email":
 		//this is an email body field, which could be multipart mime
 		//or a single part mime either html or plain
+		//return '<pre>' . print_r($value,true) . '</pre>';
 		if( !(bool)count(array_filter(array_keys($value), 'is_string'))){
 			$n=0;
 			foreach($value as $partno=>$part){

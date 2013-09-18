@@ -35,6 +35,7 @@ class CustomSMTPServer(smtpd.SMTPServer):
         #print (data)
         #we check in the database that the rcpttos is one valid user
         #otherwise fail with return "550 No such user"
+      try:
         msg = email.message_from_string(data)#parse the headers
         print msg['subject'],rcpttos[0]
         sendto=rcpttos[0]
@@ -125,11 +126,11 @@ class CustomSMTPServer(smtpd.SMTPServer):
             exceptionalemails.events.save(eventobj)
             if (eventobj['badregex'] or not eventobj['goodregex']):
                 sendfail(eventobj,"Bad email")
-                if (alertobj['Options'] and "deleteonfail" in alertobj['Options']):
+                if ('Options' in alertobj and "deleteonfail" in alertobj['Options']):
                     post['data']=None
                     post['payload']=None
             else:
-                if (alertobj['Options'] and "deleteonsuccess" in alertobj['Options']):
+                if ('Options' in alertobj and "deleteonsuccess" in alertobj['Options']):
                     post['data']=None
                     post['payload']=None
         else:
@@ -139,8 +140,12 @@ class CustomSMTPServer(smtpd.SMTPServer):
             email_id = exceptionalemails.erroremails.insert(post)
             print email_id
         #depending on the alert preferences we might have to unset the body before saving it
-
         return
+      except:
+            #something utterly unexpected happened, lets put the email in our exception bucket for later analysis
+            email_id = exceptionalemails.erroremails.insert(post)
+            print "ERROR processing %s saved to errormails " % email_id
+            return
 
 server = CustomSMTPServer(('0.0.0.0', 1025), None)
 
